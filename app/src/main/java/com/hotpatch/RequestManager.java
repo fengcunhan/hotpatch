@@ -4,7 +4,7 @@ package com.hotpatch;
  * Patch info request implement register
  * Created by renxuan on 15/7/29.
  */
-public class RequestManager {
+class RequestManager {
     private static final RequestManager INSTANCE=new RequestManager();
     private RequestManager(){
 

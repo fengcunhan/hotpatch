@@ -18,8 +18,14 @@ import java.io.File;
  * Email:fengcunhan@126.com
  */
 public class HotpatchManager {
+    private static HotpatchManager INSTANCE=new HotpatchManager();
     private HotpatchManager() {
 
+    }
+
+    public static HotpatchManager getInstance(IPatchInfoRequest request){
+        RequestManager.getInstance().setIPatchInfoRequest(request);
+        return INSTANCE;
     }
 
     public static boolean init(final Context ctx) {
@@ -37,7 +43,7 @@ public class HotpatchManager {
 
     private static void check(final Context ctx) {
         RequestManager manager = RequestManager.getInstance();
-        manager.setIPatchInfoRequest(new DefaultPatchInfoRequest(ctx));
+        manager.setIPatchInfoRequest(RequestManager.getInstance().getIPatchInfoRequest());
         manager.reqeust(new RequestManager.OnRequestCallBackListener() {
             @Override
             public void onRequest(final PatchInfo info) {
