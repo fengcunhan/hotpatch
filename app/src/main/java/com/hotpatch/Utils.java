@@ -180,6 +180,7 @@ public class Utils {
     /**
      *
      * Compare  the patch apk to the apk which package name is ctx.getPackageName()
+     * @return the result of compare
      * **/
     public static boolean isSignEqual(Context ctx,String apkFile){
         String packageSign=getInstallPackageSignature(ctx,ctx.getPackageName());

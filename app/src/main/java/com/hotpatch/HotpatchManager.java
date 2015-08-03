@@ -28,7 +28,7 @@ public class HotpatchManager {
         return INSTANCE;
     }
 
-    public static boolean init(final Context ctx) {
+    public boolean init(final Context ctx) {
         boolean isSupport = DexposedBridge.canDexposed(ctx);
         if (isSupport) {
             new Thread(new Runnable() {
@@ -41,7 +41,7 @@ public class HotpatchManager {
         return isSupport;
     }
 
-    private static void check(final Context ctx) {
+    private  void check(final Context ctx) {
         RequestManager manager = RequestManager.getInstance();
         manager.setIPatchInfoRequest(RequestManager.getInstance().getIPatchInfoRequest());
         manager.reqeust(new RequestManager.OnRequestCallBackListener() {
@@ -65,7 +65,7 @@ public class HotpatchManager {
         });
     }
 
-    private static void loadPath(PatchInfo info, Context ctx, String apkFilePath) {
+    private  void loadPath(PatchInfo info, Context ctx, String apkFilePath) {
         if (Utils.isSignEqual(ctx, apkFilePath) && TextUtils.equals(info.apkMd5, Utils.getMd5ByFile(new File(apkFilePath)))) {
             PatchMain.load(ctx, apkFilePath, null);
         }
