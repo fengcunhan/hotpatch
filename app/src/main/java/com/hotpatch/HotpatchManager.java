@@ -44,7 +44,7 @@ public class HotpatchManager {
     private  void check(final Context ctx) {
         RequestManager manager = RequestManager.getInstance();
         manager.setIPatchInfoRequest(RequestManager.getInstance().getIPatchInfoRequest());
-        manager.reqeust(new RequestManager.OnRequestCallBackListener() {
+        manager.reqeust(new OnRequestCallBackListener() {
             @Override
             public void onRequest(final PatchInfo info) {
                 if (null != info) {

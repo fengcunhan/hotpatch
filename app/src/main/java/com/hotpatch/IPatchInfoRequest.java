@@ -5,5 +5,5 @@ package com.hotpatch;
  * Created by renxuan on 15/7/29.
  */
 public interface IPatchInfoRequest {
-     void getPatchInfo(RequestManager.OnRequestCallBackListener listener, String currentVersion, Object... objects);
+     void getPatchInfo(OnRequestCallBackListener listener, String currentVersion, Object... objects);
 }

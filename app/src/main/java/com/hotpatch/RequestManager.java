@@ -14,9 +14,6 @@ class RequestManager {
         return INSTANCE;
     }
 
-    public interface OnRequestCallBackListener{
-        void onRequest(PatchInfo info);
-    }
     private IPatchInfoRequest mIPatchInfoRequest;
 
     public  void reqeust(OnRequestCallBackListener listener){
