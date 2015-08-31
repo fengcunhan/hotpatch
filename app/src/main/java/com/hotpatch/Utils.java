@@ -111,7 +111,7 @@ public class Utils {
      *
      * @param context
      * @param packageName
-     * @return
+     * @return packageSignatrue
      */
     public static String getInstallPackageSignature(Context context,
                                                     String packageName) {
@@ -180,6 +180,8 @@ public class Utils {
     /**
      *
      * Compare  the patch apk to the apk which package name is ctx.getPackageName()
+     * @param  ctx
+     * @param  apkFile the patch apk
      * @return the result of compare
      * **/
     public static boolean isSignEqual(Context ctx,String apkFile){

@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.0.5"                                                              // #CONFIG# // project version
+version = "0.0.6"                                                              // #CONFIG# // project version
 
 android {
     compileSdkVersion 22
@@ -24,8 +24,7 @@ android {
 
 
 dependencies {
-    provided files('libs/dexposedbridge.jar')
-    provided files('libs/patchloader.jar')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
 }
 
 
