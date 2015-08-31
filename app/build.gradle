@@ -2,7 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
 
-version = "0.0.3"                                                              // #CONFIG# // project version
+version = "0.0.5"                                                              // #CONFIG# // project version
 
 android {
     compileSdkVersion 22
@@ -84,6 +84,18 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
+task releaseJar(type: Copy) {
+    from( 'build/intermediates/bundles/release')
+    into( 'build/libs')
+    include('classes.jar')
+    rename('classes.jar', 'superlog' + version + '.jar')
+}
+
+task releaseLib(type: Copy, dependsOn: releaseJar) {
+    into "../../release"
+    from 'libs'
+    from 'build/libs'
+}
 
 artifacts {
     archives javadocJar

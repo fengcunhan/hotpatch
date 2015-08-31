@@ -1,5 +1,6 @@
 package com.hotpatch;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.text.TextUtils;
 
@@ -19,6 +20,11 @@ import java.io.File;
  */
 public class HotpatchManager {
     private static HotpatchManager INSTANCE=new HotpatchManager();
+
+    public void setFileDownloader(DownLoadManager.DownloadFile fileDownloader){
+        DownLoadManager.getInstance().setDownloadFile(fileDownloader);
+    }
+
     private HotpatchManager() {
 
     }
@@ -53,7 +59,12 @@ public class HotpatchManager {
                     if (file.exists()) {
                         loadPath(info, ctx, apkPath);
                     } else {
-                        DownLoadManager.getInstance().downloadFile(ctx, info.apkFileUrl, new DownLoadManager.OnFileDownload() {
+                        DownLoadManager.DownloadFile downloadFile=DownLoadManager.getInstance().getDownloadFile();
+                        if(null==downloadFile){
+                            downloadFile=new DefaultFileDownload();
+                            DownLoadManager.getInstance().setDownloadFile(downloadFile);
+                        }
+                        downloadFile.download(ctx, info.apkFileUrl, new DownLoadManager.OnFileDownload() {
                             @Override
                             public void fileDownload(String apkFilePath) {
                                 loadPath(info, ctx, apkFilePath);
